@@ -20,8 +20,10 @@ This project provides an **Inventory Prediction API** that forecasts future sale
 ## 🚀 **Installation & Setup**  
 
 ### 1️⃣ **Clone the Repository**  
-`git clone https://github.com/Anuradha-Ranathunga/Inventory-Prediction-Program
-cd Inventory-Prediction-Program`
+```
+git clone https://github.com/Anuradha-Ranathunga/Inventory-Prediction-Program
+cd Inventory-Prediction-Program
+```
 
 ### 2️⃣ Install Dependencies
 `pip install flask flask-ngrok tensorflow pandas numpy scikit-learn joblib matplotlib`
