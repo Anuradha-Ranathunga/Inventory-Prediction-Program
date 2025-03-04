@@ -63,7 +63,7 @@ cd Inventory-Prediction-Program`
 
 ## 📊 Visualizing the Prediction Graph
 
-![alt text](inventory.png)
+![image alt](https://github.com/Anuradha-Ranathunga/Inventory-Prediction-Program/blob/ad344e32261f1e89a1d2d23f1e36dca2a2f245c9/Inventory.png)
 
 To view the generated graph, run this Python script:
 ```
