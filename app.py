@@ -5,15 +5,14 @@ import pandas as pd
 from flask import Flask, request, jsonify
 from tensorflow.keras.models import load_model
 import joblib
-from tensorflow.keras.losses import MeanSquaredError # Import MeanSquaredError
+from tensorflow.keras.losses import MeanSquaredError 
 
 app = Flask(__name__)
 
 train_df = pd.read_csv("train.csv")
 SEQ_LENGTH=30
 
-# Load trained model and scaler
-model = load_model("inventory_lstm_model.h5", custom_objects={"mse": MeanSquaredError()}) # Use imported MeanSquaredError
+model = load_model("inventory_lstm_model.h5", custom_objects={"mse": MeanSquaredError()}) 
 model.compile(loss='mse', optimizer='adam', metrics=['mean_absolute_error'])
 scaler = joblib.load("scaler.pkl")
 
@@ -31,7 +30,6 @@ def predict():
 
     past_sales = past_data['sales_scaled'].values.reshape(1, SEQ_LENGTH, 1)
 
-    # Predict sales
     predicted_sales_scaled = model.predict(past_sales)[0][0]
     predicted_sales = scaler.inverse_transform([[predicted_sales_scaled]])[0][0]
 
