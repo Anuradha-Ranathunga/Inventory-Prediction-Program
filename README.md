@@ -1,4 +1,6 @@
-# Inventory-Prediction-Program (LSTM + Flask) 
+# 📦Inventory-Prediction-Program (LSTM + Flask) 
+
+## 🔹 Overview
 This project provides an **Inventory Prediction API** that forecasts future sales of a product in a store using a **Long Short-Term Memory (LSTM) model** trained on historical sales data.  
 
 ### Tech Stack: 
@@ -30,50 +32,67 @@ cd Inventory-Prediction-Program`
 ## 📡 API Endpoints
 
 ### 🔹 Predict Sales
-**Request (POST)**
-**Endpoint:** `/predict`
+
+**Endpoint:** `POST/predict`
+
 **Content-Type:** `application/json`
+
 **Body Parameters:**
-`{
+```
+{
     "store": 1,
     "item": 1,
     "date": "2018-01-01"
-}`
+}
+```
 
 **Response**
-`{
+
+```
+{
     "store": 1,
     "item": 1,
     "date": "2018-01-01",
     "predicted_sales": 20.45,
     "plot": "data:image/png;base64,..."
-}`
+}
+```
 
 - `predicted_sales`: Forecasted sales for the given date
 - `plot`: Base64-encoded graph showing historical data + prediction
 
 ## 📊 Visualizing the Prediction Graph
-To view the generated graph, run this Python script:
 
-`import requests
-from PIL import Image
-import base64
-import io
-url = "https://xyz.ngrok.io/predict"  # Replace with your API URL
-data = {"store": 1, "item": 1, "date": "2018-01-01"}
-response = requests.post(url, json=data).json()
-plot_data = base64.b64decode(response["plot"].split(",")[1]) ## Decode and display the image
-img = Image.open(io.BytesIO(plot_data))
-img.show()`
+![alt text](inventory.png)
+
+To view the generated graph, run this Python script:
+```
+plt.figure(figsize=(10, 6))
+plt.plot(actual_sales, label='Actual Sales', marker='o')
+plt.plot(predicted_sales, label='Predicted Sales', marker='x')
+plt.xlabel('Time Period')
+plt.ylabel('Sales')
+plt.title('Actual vs. Predicted Sales')
+plt.legend()
+plt.grid(True)
+plt.show()
+```
+
+
 This will display a plot of past sales with the forecasted point.
 
 ## ⚡ Project Structure
 
-📂 inventory-prediction-api
+### 📂 inventory-prediction-api
+
 │── 📄 app.py               `# Flask API`
+
 │── 📄 inventory_lstm_model.h5  `# Trained LSTM model`
+
 │── 📄 scaler.pkl           `# Scaler for data normalization`
+
 │── 📄 train.csv            `# Training data`
+
 │── 📄 README.md            `# Project documentation`
 
 
